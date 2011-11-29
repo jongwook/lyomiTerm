@@ -345,6 +345,6 @@ char PieTerminal::peek() {
 }
 
 void PieTerminal::send(const char * data, int len) {
-	if(len==-1) len=strlen(data);
+	if(len==-1) len=(int)strlen(data);
 	//socket_send(sock,data,len);
 }

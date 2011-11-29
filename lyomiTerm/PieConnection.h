@@ -6,11 +6,13 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Cocoa/Cocoa.h>
 #import "AsyncSocket.h"
 
 #define TERMINAL_ROWS 24
 #define TERMINAL_COLS 80
+
+BOOL isCP949(unsigned char a, unsigned char b);
 
 @class PieView, PieViewController;
 

@@ -9,7 +9,6 @@
 #include <sstream>
 
 #import "PieConnection.h"
-#import "PieView.h"
 
 #define BETWEEN(x,a,b) ( (x)>=(a) && (x)<=(b) )
 
@@ -71,7 +70,7 @@ BOOL isCP949(unsigned char a, unsigned char b) {
 -(BOOL) connectToHost:(NSString *)host onPort:(int)port {
 	socket=[[AsyncSocket alloc]initWithDelegate:self userData:0L];
 	[socket connectToHost:host onPort:port error:&error];
-	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+//	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 	return YES;
 }
 
@@ -81,7 +80,7 @@ BOOL isCP949(unsigned char a, unsigned char b) {
 }
 
 -(void) onSocketDidDisconnect:(AsyncSocket *)sock {
-	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+//	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 	[viewController disconnect];
 	NSLog(@"Socket Disconnected");
 }
@@ -138,7 +137,7 @@ BOOL isCP949(unsigned char a, unsigned char b) {
 		cursor++;
 		if(token[0]!='\xff') {	// negotiation ended
 			stage=2;
-			[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+//			[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 		}
 		if(token[0]=='\xff') {	// negotiation
 			if(pos==cursor) {
@@ -416,7 +415,7 @@ BOOL isCP949(unsigned char a, unsigned char b) {
 }
 
 -(void) send:(const char *)token {
-	[self send:token length:strlen(token)];
+	[self send:token length:(int)strlen(token)];
 }
 
 -(void) send:(const char *)token length:(int)length {
@@ -426,7 +425,7 @@ BOOL isCP949(unsigned char a, unsigned char b) {
 	//printf("\n");
 	NSData *data=[NSData dataWithBytes:token length:length];
 	[socket writeData:data withTimeout:-1 tag:1234L];
-	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+//	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 }
 
 -(void) drawChar:(unichar)c {
