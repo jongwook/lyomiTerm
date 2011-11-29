@@ -16,19 +16,19 @@ static const int v[21] = { 0x314f, 0x3150, 0x3151, 0x3152, 0x3153, 0x3154, 0x315
 static const int j[28] = { 0, 0x3131, 0x3132, 0x3133, 0x3134, 0x3135, 0x3136, 0x3137, 0x3139, 0x313a, 
 				0x313b, 0x313c,	0x313d, 0x313e, 0x313f, 0x3140, 0x3141, 0x3142,	0x3144, 0x3145, 0x3146, 
 				0x3147, 0x3148,	0x314a, 0x314b, 0x314c, 0x314d, 0x314e };
+static const int backstate[10] = {0, 0, 0, 1, 2, 3, 3, 5, 6, 8};
 
 Korean::Korean() {
 	size = 0;
 	
-	for(int i=0; i<19; ++i) {
+	for(int i=0; i<19; ++i) 
 		cho[c[i]] = i;
-	}
-	for(int i=0; i<21; ++i) {
+
+	for(int i=0; i<21; ++i) 
 		vowel[v[i]] = i;
-	}
-	for(int i=0; i<28; ++i) {
+
+	for(int i=0; i<28; ++i) 
 		jong[j[i]] = i;
-	}
 	
 	complex[MIX(0x3131,0x3145)] = 0x3133;	// ㄳ
 	complex[MIX(0x3134,0x3148)] = 0x3135;	// ㄵ
@@ -47,9 +47,8 @@ Korean::Korean() {
 	complex[MIX(0x3157,0x3163)] = 0x315A;	// ㅚ
 	complex[MIX(0x315C,0x3153)] = 0x315D;	// ㅝ
 	complex[MIX(0x315C,0x3154)] = 0x315E;	// ㅞ
-	complex[MIX(0x315C,0x3164)] = 0x315F;	// ㅟ
+	complex[MIX(0x315C,0x3163)] = 0x315F;	// ㅟ
 	complex[MIX(0x3161,0x3163)] = 0x3162;	// ㅢ
-	
 }
 
 unichar Korean::commit(int pos, int next) {
@@ -57,10 +56,9 @@ unichar Korean::commit(int pos, int next) {
 	
 	unichar result = value(pos);
 	
-	for(int i=pos; i<size; ++i) {
+	for(int i=pos; i<size; ++i)
 		buffer[i-pos] = buffer[i];
-	}
-	
+
 	size -= pos;
 	return result;
 }
@@ -78,116 +76,85 @@ unichar Korean::add(unichar c) {
 
 	switch(state) {
 		case 0:
-			if(consonant)
-				state = 1;
-			else
-				state = 2;
+			if(consonant)		state = 1;
+			else				state = 2;
 			break;
 		case 1:
-			if(consonant)
-				return commit(1, 1);
-			else 
-				state = 3;
+			if(consonant)		return commit(1, 1);
+			else				state = 3;
 			break;
 		case 2:
-			if(consonant)
-				return commit(1, 1);
-			else if(Vc)
-				state = 2;
-			else
-				return commit(1, 2);
+			if(consonant)		return commit(1, 1);
+			else if(Vc)			state = 4;
+			else				return commit(1, 2);
 			break;
 		case 3:
-			if(L)
-				return commit(2, 1);
-			else if(consonant)
-				state = 5;
-			else if(Vc)
-				state = 6;
-			else
-				return commit(2, 2);
+			if(L)				return commit(2, 1);
+			else if(consonant)	state = 5;
+			else if(Vc)			state = 6;
+			else				return commit(2, 2);
 			break;
 		case 4:
-			if(consonant)
-				return commit(2, 1);
-			else
-				return commit(2, 2);
+			if(consonant)		return commit(2, 1);
+			else				return commit(2, 2);
 			break;
 		case 5:
-			if(Tc)
-				state = 7;
-			else if(consonant)
-				return commit(3, 1);
-			else
-				return commit(2, 3);
+			if(Tc)				state = 7;
+			else if(consonant)	return commit(3, 1);
+			else				return commit(2, 3);
 			break;
 		case 6:
-			if(L)
-				return commit(3, 1);
-			else if(consonant)
-				state = 8;
-			else
-				return commit(3, 2);
+			if(L)				return commit(3, 1);
+			else if(consonant)	state = 8;
+			else				return commit(3, 2);
 			break;
 		case 7:
-			if(consonant)
-				return commit(4, 1);
-			else
-				return commit(3, 3);
+			if(consonant)		return commit(4, 1);
+			else				return commit(3, 3);
 			break;
 		case 8:
-			if(Tc)
-				state = 9;
-			else if(consonant)
-				return commit(4, 1);
-			else
-				return commit(3, 3);
+			if(Tc)				state = 9;
+			else if(consonant)	return commit(4, 1);
+			else				return commit(3, 3);
 			break;
 		case 9:
-			if(consonant)
-				return commit(5, 1);
-			else
-				return commit(4, 3);
+			if(consonant)		return commit(5, 1);
+			else				return commit(4, 3);
 			break;
 	}
 	
 	return 0;
 }
 
+unichar Korean::backspace() {
+	if(size == 0) return 0;
+	--size;
+	state = backstate[state];
+	return value();
+}
+
 unichar Korean::value(int pos) {
 	if(pos == -1) pos = size;
-	
 	if(pos == 0) return 0;
 	
-	int a = 0, b = 0, c = 0;
+	int a = 0, b = 0, c = 0, i = 2;
 
-	// only one to return
-	if( pos == 1 ) {
-		return buffer[0];
-	}
-	
-	// complex vowel only 
-	if(vowel.count(buffer[0]) != 0) {
+	if(pos == 1) return buffer[0];		// only one to return
+
+	if(vowel.count(buffer[0]) != 0) 	// complex vowel only 
 		return complex[MIX(buffer[0],buffer[1])];
-	}
+
+	a = cho[buffer[0]];					// choseong
 	
-	// choseong
-	a = cho[buffer[0]];
-	
-	// jungseong
-	b = vowel[buffer[1]];
+	b = vowel[buffer[1]];				// jungseong
 	if(pos == 2) return 0xAC00 + a*21*28 + b*28;
 	
-	int i = 2;
-	if(vowel.count(buffer[i]) != 0) {
-		b = vowel[complex[MIX(buffer[1],buffer[i])]];
-		i++;
-	}
+	if(vowel.count(buffer[i]) != 0) 
+		b = vowel[complex[MIX(buffer[1],buffer[i++])]];
 	
 	if(pos == i) return 0xAC00 + a*21*28 + b*28;
 	
-	// jongseong
-	c = jong[buffer[i++]];
+	c = jong[buffer[i++]];				// jongseong
 	
 	if (pos == i) return 0xAC00 + a*21*28 + b*28 + c;
 	
@@ -198,8 +165,7 @@ unichar Korean::value(int pos) {
 
 unichar Korean::clear() {
 	unichar result = value();
-	size = 0;
-	state = 0;
+	size = state = 0;
 	return result;
 }
 

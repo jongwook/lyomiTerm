@@ -5,7 +5,10 @@
 //
 
 #import "PieView.h"
+#import "Korean.h"
 #import <AppKit/NSStringDrawing.h>
+
+static Korean korean;
 
 @implementation PieView
 
@@ -14,7 +17,7 @@
 - (void)awakeFromNib 
 {
 	pie=[[PieConnection alloc] init];
-	[pie connectToHost:@"loco.kaist.ac.kr" onPort:23]; //temporary
+	[pie connectToHost:@"pie.kaist.ac.kr" onPort:23]; //temporary
 	pie.pieView=self;
 	[self.window makeKeyWindow];
 	[self.window makeFirstResponder:self];
@@ -62,7 +65,7 @@
 			int colorindex=pie.background[index];
 			CGColorRef color=(colorindex==-2)?defaultBackground:(colorindex==-1)?defaultForeground:colors[colorindex];
 			CGContextSetFillColorWithColor(context, color);
-			CGRect tmprect=CGRectMake(j*8.f, i*20.0f, 8.0f, 20.0f);
+			CGRect tmprect=CGRectMake(j*8.0f, 460.0f-i*20.0f, 8.0f, 20.0f);
 			CGContextAddRect(context,tmprect);
 			CGContextFillRect(context,tmprect);			
 			
@@ -72,7 +75,7 @@
 	
 	// draw cursor
 	CGContextSetFillColorWithColor(context, cursorColor);
-	CGRect tmprect=CGRectMake(pie.currentCol*8.f, pie.currentRow*20.0f, 8.0f, 20.0f);
+	CGRect tmprect=CGRectMake(pie.currentCol*8.f, 460.0f-pie.currentRow*20.0f, 8.0f, 20.0f);
 	CGContextAddRect(context,tmprect);
 	CGContextFillRect(context,tmprect);	
 	
@@ -108,7 +111,52 @@
 {
 	// Key pressed: Do something...
 	NSLog(@"keyDown: %@", theEvent);
+	
+	if(theEvent.keyCode == 51) {
+		NSLog(@"Backspace");
+		
+		if(korean.getSize() != 0) {
+			tempCharacter = korean.backspace();
+		} else {
+			[self sendKey:8];
+		}
+	} else {
+		int c=[theEvent.characters characterAtIndex:0];
+		NSLog(@"input : %C", c);
+		
+		if((c>=0x3130 && c<=0x318F) || (c>=0x1100 && c<=0x11FF) || (c>=0xAC00 && c<=0xD7AF)) {	// korean letters
+			unichar result = korean.add(c);
+			tempCharacter = korean.value();
+			
+			if(result) {
+				[self sendString:[NSString stringWithFormat:@"%C", result]];
+			}
+		} else {
+			unichar result = korean.clear();
+			if(result) {
+				[self sendString:[NSString stringWithFormat:@"%C", result]];
+			}
+			
+			[self sendKey:c];
+			tempCharacter = 0;
+		}	
+	}
+	
 	[super keyDown:theEvent];
 }
-	
+
+- (void)sendKey:(int)key {
+	if(key=='\n') {
+		[pie send:"\r\n"];
+	} else if(key<0x80) {
+		[pie send:(char *)&key length:1];
+	} 
+}
+
+- (void)sendString:(NSString *)str {
+	const char *cstr=[str cStringUsingEncoding:pie.encoding];
+	[pie send:cstr length:(int)strlen(cstr)];
+}
+
 @end
+

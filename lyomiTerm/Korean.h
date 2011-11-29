@@ -2,6 +2,8 @@
  *  Korean.h
  *  Pie
  *
+ *  Created by Jong Wook Kim on 2/13/11.
+ *  Copyright 2011 jongwook. All rights reserved.
  *
  */
 
@@ -23,10 +25,14 @@ protected:
 	
 public:
 	Korean();
+	int getSize() { return size; }
 	int getState() { return state; }
 	
 	// added a keystroke,
 	unichar add(unichar c);	
+	
+	// type backspace
+	unichar backspace();
 	
 	// return current character
 	unichar value(int pos = -1);

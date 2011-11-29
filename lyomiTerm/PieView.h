@@ -15,10 +15,13 @@
 	CGColorRef colors[8];
 	NSColor *nsColors[8], *nsForeground, *nsBackground;
 	BOOL init;
+	unichar tempCharacter;
 }
 
 - (BOOL)acceptsFirstResponder;
 - (void)keyDown:(NSEvent *)theEvent;
+- (void)sendKey:(int)key;
+- (void)sendString:(NSString *)str;
 
 @property (nonatomic,retain) PieConnection *pie;
 
