@@ -14,6 +14,9 @@
 		5119FC6714857C8800F3734B /* lyomiTermAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5119FC6614857C8800F3734B /* lyomiTermAppDelegate.mm */; };
 		5119FC6A14857C8900F3734B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5119FC6814857C8900F3734B /* MainMenu.xib */; };
 		511C374914857DC200C2F833 /* Korean.mm in Sources */ = {isa = PBXBuildFile; fileRef = 511C374814857DC200C2F833 /* Korean.mm */; };
+		511C375114857ECD00C2F833 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 511C374C14857ECD00C2F833 /* AsyncSocket.m */; };
+		511C375214857ECD00C2F833 /* PieConnection.mm in Sources */ = {isa = PBXBuildFile; fileRef = 511C374E14857ECD00C2F833 /* PieConnection.mm */; };
+		511C375314857ECD00C2F833 /* PieTerminal.mm in Sources */ = {isa = PBXBuildFile; fileRef = 511C375014857ECD00C2F833 /* PieTerminal.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,12 @@
 		5119FC6914857C8900F3734B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		511C374714857DC200C2F833 /* Korean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Korean.h; sourceTree = "<group>"; };
 		511C374814857DC200C2F833 /* Korean.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Korean.mm; sourceTree = "<group>"; };
+		511C374B14857ECD00C2F833 /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
+		511C374C14857ECD00C2F833 /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
+		511C374D14857ECD00C2F833 /* PieConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieConnection.h; sourceTree = "<group>"; };
+		511C374E14857ECD00C2F833 /* PieConnection.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PieConnection.mm; sourceTree = "<group>"; };
+		511C374F14857ECD00C2F833 /* PieTerminal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieTerminal.h; sourceTree = "<group>"; };
+		511C375014857ECD00C2F833 /* PieTerminal.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PieTerminal.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +94,12 @@
 		5119FC5914857C8800F3734B /* lyomiTerm */ = {
 			isa = PBXGroup;
 			children = (
+				511C374B14857ECD00C2F833 /* AsyncSocket.h */,
+				511C374C14857ECD00C2F833 /* AsyncSocket.m */,
+				511C374D14857ECD00C2F833 /* PieConnection.h */,
+				511C374E14857ECD00C2F833 /* PieConnection.mm */,
+				511C374F14857ECD00C2F833 /* PieTerminal.h */,
+				511C375014857ECD00C2F833 /* PieTerminal.mm */,
 				511C374714857DC200C2F833 /* Korean.h */,
 				511C374814857DC200C2F833 /* Korean.mm */,
 				5119FC6514857C8800F3734B /* lyomiTermAppDelegate.h */,
@@ -170,6 +185,9 @@
 				5119FC6014857C8800F3734B /* main.m in Sources */,
 				5119FC6714857C8800F3734B /* lyomiTermAppDelegate.mm in Sources */,
 				511C374914857DC200C2F833 /* Korean.mm in Sources */,
+				511C375114857ECD00C2F833 /* AsyncSocket.m in Sources */,
+				511C375214857ECD00C2F833 /* PieConnection.mm in Sources */,
+				511C375314857ECD00C2F833 /* PieTerminal.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
