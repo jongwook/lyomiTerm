@@ -2,8 +2,6 @@
  *  Korean.h
  *  Pie
  *
- *  Created by Jong Wook Kim on 2/13/11.
- *  Copyright 2011 jongwook. All rights reserved.
  *
  */
 
