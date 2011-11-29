@@ -11,28 +11,21 @@
 
 @synthesize pie;
 
-- (id)initWithFrame:(NSRect)frame
+- (void)awakeFromNib 
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code here.
-    }
-    
-    return self;
+	pie=[[PieConnection alloc] init];
+	[pie connectToHost:@"loco.kaist.ac.kr" onPort:23]; //temporary
+	pie.pieView=self;
+	[self.window makeKeyWindow];
+	[self.window makeFirstResponder:self];
 }
 
 - (void)drawRect:(NSRect)dirtyRect
 {
-	NSLog(@"drawing...");
-	
-	if(pie==nil) {
-		pie=[[PieConnection alloc] init];
-		[pie connectToHost:@"loco.kaist.ac.kr" onPort:23];
-		pie.pieView=self;
-	}
+	if(pie==nil) return;
 
 	font=[NSFont fontWithName:@"Courier" size:16.0f];
-	defaultForeground=CGColorCreateGenericRGB(0.7, 0.7, 0.7, 1.0);
+	defaultForeground=CGColorCreateGenericRGB(0.8, 0.8, 0.8, 1.0);
 	defaultBackground=CGColorCreateGenericRGB(0.2, 0.3, 0.5, 1.0);
 	cursorColor=CGColorCreateGenericRGB(0.4, 1.0, 0.0, 1.0);
 	
@@ -45,7 +38,7 @@
 	colors[6]=CGColorCreateGenericRGB(0.0, 1.0, 1.0, 1.0);
 	colors[7]=CGColorCreateGenericRGB(1.0, 1.0, 1.0, 1.0);
 	
-	nsForeground=[NSColor colorWithDeviceRed:0.7 green:0.7 blue:0.7 alpha:1.0];
+	nsForeground=[NSColor colorWithDeviceRed:0.8 green:0.8 blue:0.8 alpha:1.0];
 	nsBackground=[NSColor colorWithDeviceRed:0.2 green:0.3 blue:0.5 alpha:1.0];
 	
 	nsColors[0]=[NSColor blackColor];
@@ -106,4 +99,16 @@
 
 }
 
+- (BOOL)acceptsFirstResponder 
+{ 
+	return YES; 
+}
+
+- (void)keyDown:(NSEvent *)theEvent
+{
+	// Key pressed: Do something...
+	NSLog(@"keyDown: %@", theEvent);
+	[super keyDown:theEvent];
+}
+	
 @end

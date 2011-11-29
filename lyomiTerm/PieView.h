@@ -17,6 +17,9 @@
 	BOOL init;
 }
 
+- (BOOL)acceptsFirstResponder;
+- (void)keyDown:(NSEvent *)theEvent;
+
 @property (nonatomic,retain) PieConnection *pie;
 
 @end
