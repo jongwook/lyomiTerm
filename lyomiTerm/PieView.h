@@ -7,7 +7,7 @@
 #import <Cocoa/Cocoa.h>
 #include "PieConnection.h"
 
-@interface lyomiTermView : NSView {
+@interface PieView : NSView {
 	
 	PieConnection *pie;
 	NSFont *font;

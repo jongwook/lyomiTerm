@@ -4,10 +4,10 @@
 //
 //
 
-#import "lyomiTermView.h"
+#import "PieView.h"
 #import <AppKit/NSStringDrawing.h>
 
-@implementation lyomiTermView
+@implementation PieView
 
 @synthesize pie;
 
@@ -23,6 +23,14 @@
 
 - (void)drawRect:(NSRect)dirtyRect
 {
+	NSLog(@"drawing...");
+	
+	if(pie==nil) {
+		pie=[[PieConnection alloc] init];
+		[pie connectToHost:@"loco.kaist.ac.kr" onPort:23];
+		pie.pieView=self;
+	}
+	
     // Drawing code here.
 	font=[NSFont fontWithName:@"Courier" size:16.0f];
 	defaultForeground=CGColorCreateGenericRGB(0.7, 0.7, 1.0, 1.0);
@@ -44,6 +52,8 @@
 	// background rendering
 	for (int i=0;i<TERMINAL_ROWS;i++) {
 		for(int j=0;j<TERMINAL_COLS;j++) {
+			[nsGraphicsContext saveGraphicsState];
+			
 			int index=i*TERMINAL_COLS+j;
 			int colorindex=pie.background[index];
 			CGColorRef color=(colorindex==-2)?defaultBackground:(colorindex==-1)?defaultForeground:colors[colorindex];
@@ -52,7 +62,7 @@
 			CGContextAddRect(context,tmprect);
 			CGContextFillRect(context,tmprect);			
 			
-			
+			[nsGraphicsContext restoreGraphicsState];
 		}
 	}
 	
@@ -63,14 +73,24 @@
 	CGContextFillRect(context,tmprect);	
 	
 	// text rendering
+	NSDictionary *attr=[NSMutableDictionary dictionary];
+						
+	[attr setValue:[[NSFontManager sharedFontManager] fontWithFamily:@"Courier New" traits:0 weight:9 size:15.0]
+			forKey:NSFontAttributeName];
+
 	for (int i=0;i<TERMINAL_ROWS;i++) {
 		for(int j=0;j<TERMINAL_COLS;j++) {
+			[nsGraphicsContext saveGraphicsState];
+			
 			int index=i*TERMINAL_COLS+j;
 			int colorindex=pie.foreground[index];
 			CGColorRef color=(colorindex==-2)?defaultBackground:(colorindex==-1)?defaultForeground:colors[colorindex];
+			//[attr setValue:[NSColor redColor] forKey:NSForegroundColorAttributeName];
 			CGContextSetFillColorWithColor(context, color);			
 			NSString *str=[NSString stringWithFormat:@"%C", pie.screen[index]];
-			[str drawAtPoint:NSMakePoint(j*8.0f,i*20.0f)];
+			[str drawAtPoint:CGPointMake(j*8.0f,460.0f-i*20.0f) withAttributes:attr];
+			
+			[nsGraphicsContext restoreGraphicsState];
 		}
 	}
 

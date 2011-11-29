@@ -115,8 +115,8 @@ BOOL isCP949(unsigned char a, unsigned char b) {
 		printf("\n");
 	}
 	[self parse];
-	[sock readDataWithTimeout:-1 tag:4321L];
-	[pieView setNeedsDisplay];
+	[sock readDataWithTimeout:-1 tag:4321L];	
+	[pieView setNeedsDisplay:YES];
 }
 
 -(void) onSocket:(AsyncSocket *)sock didWriteDataWithTag:(long)tag {

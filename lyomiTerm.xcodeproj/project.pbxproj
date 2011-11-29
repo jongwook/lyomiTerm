@@ -17,7 +17,7 @@
 		511C375114857ECD00C2F833 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 511C374C14857ECD00C2F833 /* AsyncSocket.m */; };
 		511C375214857ECD00C2F833 /* PieConnection.mm in Sources */ = {isa = PBXBuildFile; fileRef = 511C374E14857ECD00C2F833 /* PieConnection.mm */; };
 		511C375314857ECD00C2F833 /* PieTerminal.mm in Sources */ = {isa = PBXBuildFile; fileRef = 511C375014857ECD00C2F833 /* PieTerminal.mm */; };
-		511C3763148586E300C2F833 /* lyomiTermView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 511C3762148586E300C2F833 /* lyomiTermView.mm */; };
+		511C3763148586E300C2F833 /* PieView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 511C3762148586E300C2F833 /* PieView.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,8 +42,8 @@
 		511C374E14857ECD00C2F833 /* PieConnection.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PieConnection.mm; sourceTree = "<group>"; };
 		511C374F14857ECD00C2F833 /* PieTerminal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieTerminal.h; sourceTree = "<group>"; };
 		511C375014857ECD00C2F833 /* PieTerminal.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PieTerminal.mm; sourceTree = "<group>"; };
-		511C3761148586E300C2F833 /* lyomiTermView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lyomiTermView.h; sourceTree = "<group>"; };
-		511C3762148586E300C2F833 /* lyomiTermView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = lyomiTermView.mm; sourceTree = "<group>"; };
+		511C3761148586E300C2F833 /* PieView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieView.h; sourceTree = "<group>"; };
+		511C3762148586E300C2F833 /* PieView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PieView.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,8 +107,8 @@
 				511C374814857DC200C2F833 /* Korean.mm */,
 				5119FC6514857C8800F3734B /* lyomiTermAppDelegate.h */,
 				5119FC6614857C8800F3734B /* lyomiTermAppDelegate.mm */,
-				511C3761148586E300C2F833 /* lyomiTermView.h */,
-				511C3762148586E300C2F833 /* lyomiTermView.mm */,
+				511C3761148586E300C2F833 /* PieView.h */,
+				511C3762148586E300C2F833 /* PieView.mm */,
 				5119FC6814857C8900F3734B /* MainMenu.xib */,
 				5119FC5A14857C8800F3734B /* Supporting Files */,
 			);
@@ -152,6 +152,9 @@
 /* Begin PBXProject section */
 		5119FC4614857C8700F3734B /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = 5119FC4914857C8700F3734B /* Build configuration list for PBXProject "lyomiTerm" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -193,7 +196,7 @@
 				511C375114857ECD00C2F833 /* AsyncSocket.m in Sources */,
 				511C375214857ECD00C2F833 /* PieConnection.mm in Sources */,
 				511C375314857ECD00C2F833 /* PieTerminal.mm in Sources */,
-				511C3763148586E300C2F833 /* lyomiTermView.mm in Sources */,
+				511C3763148586E300C2F833 /* PieView.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,7 +252,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.6;
 			};
 			name = Debug;
 		};
@@ -268,7 +271,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.6;
 			};
 			name = Release;
 		};
@@ -278,6 +281,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "lyomiTerm/lyomiTerm-Prefix.pch";
 				INFOPLIST_FILE = "lyomiTerm/lyomiTerm-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -289,6 +293,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "lyomiTerm/lyomiTerm-Prefix.pch";
 				INFOPLIST_FILE = "lyomiTerm/lyomiTerm-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
