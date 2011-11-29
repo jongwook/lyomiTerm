@@ -11,8 +11,9 @@
 		5119FC5E14857C8800F3734B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5119FC5C14857C8800F3734B /* InfoPlist.strings */; };
 		5119FC6014857C8800F3734B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5119FC5F14857C8800F3734B /* main.m */; };
 		5119FC6414857C8800F3734B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 5119FC6214857C8800F3734B /* Credits.rtf */; };
-		5119FC6714857C8800F3734B /* lyomiTermAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5119FC6614857C8800F3734B /* lyomiTermAppDelegate.m */; };
+		5119FC6714857C8800F3734B /* lyomiTermAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5119FC6614857C8800F3734B /* lyomiTermAppDelegate.mm */; };
 		5119FC6A14857C8900F3734B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5119FC6814857C8900F3734B /* MainMenu.xib */; };
+		511C374914857DC200C2F833 /* Korean.mm in Sources */ = {isa = PBXBuildFile; fileRef = 511C374814857DC200C2F833 /* Korean.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,8 +28,10 @@
 		5119FC6114857C8800F3734B /* lyomiTerm-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "lyomiTerm-Prefix.pch"; sourceTree = "<group>"; };
 		5119FC6314857C8800F3734B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		5119FC6514857C8800F3734B /* lyomiTermAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lyomiTermAppDelegate.h; sourceTree = "<group>"; };
-		5119FC6614857C8800F3734B /* lyomiTermAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lyomiTermAppDelegate.m; sourceTree = "<group>"; };
+		5119FC6614857C8800F3734B /* lyomiTermAppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = lyomiTermAppDelegate.mm; sourceTree = "<group>"; };
 		5119FC6914857C8900F3734B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		511C374714857DC200C2F833 /* Korean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Korean.h; sourceTree = "<group>"; };
+		511C374814857DC200C2F833 /* Korean.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Korean.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,8 +85,10 @@
 		5119FC5914857C8800F3734B /* lyomiTerm */ = {
 			isa = PBXGroup;
 			children = (
+				511C374714857DC200C2F833 /* Korean.h */,
+				511C374814857DC200C2F833 /* Korean.mm */,
 				5119FC6514857C8800F3734B /* lyomiTermAppDelegate.h */,
-				5119FC6614857C8800F3734B /* lyomiTermAppDelegate.m */,
+				5119FC6614857C8800F3734B /* lyomiTermAppDelegate.mm */,
 				5119FC6814857C8900F3734B /* MainMenu.xib */,
 				5119FC5A14857C8800F3734B /* Supporting Files */,
 			);
@@ -163,7 +168,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5119FC6014857C8800F3734B /* main.m in Sources */,
-				5119FC6714857C8800F3734B /* lyomiTermAppDelegate.m in Sources */,
+				5119FC6714857C8800F3734B /* lyomiTermAppDelegate.mm in Sources */,
+				511C374914857DC200C2F833 /* Korean.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +289,7 @@
 				5119FC6F14857C8900F3734B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
