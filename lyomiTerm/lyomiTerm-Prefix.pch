@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'lyomiTerm' target in the 'lyomiTerm' project
+//
+
+#ifdef __OBJC__
+	#import <Cocoa/Cocoa.h>
+#endif

@@ -1,0 +1,290 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5119FC5414857C8800F3734B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5119FC5314857C8800F3734B /* Cocoa.framework */; };
+		5119FC5E14857C8800F3734B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5119FC5C14857C8800F3734B /* InfoPlist.strings */; };
+		5119FC6014857C8800F3734B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5119FC5F14857C8800F3734B /* main.m */; };
+		5119FC6414857C8800F3734B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 5119FC6214857C8800F3734B /* Credits.rtf */; };
+		5119FC6714857C8800F3734B /* lyomiTermAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5119FC6614857C8800F3734B /* lyomiTermAppDelegate.m */; };
+		5119FC6A14857C8900F3734B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5119FC6814857C8900F3734B /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5119FC4F14857C8700F3734B /* lyomiTerm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lyomiTerm.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5119FC5314857C8800F3734B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		5119FC5614857C8800F3734B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		5119FC5714857C8800F3734B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		5119FC5814857C8800F3734B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5119FC5B14857C8800F3734B /* lyomiTerm-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "lyomiTerm-Info.plist"; sourceTree = "<group>"; };
+		5119FC5D14857C8800F3734B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5119FC5F14857C8800F3734B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5119FC6114857C8800F3734B /* lyomiTerm-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "lyomiTerm-Prefix.pch"; sourceTree = "<group>"; };
+		5119FC6314857C8800F3734B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		5119FC6514857C8800F3734B /* lyomiTermAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lyomiTermAppDelegate.h; sourceTree = "<group>"; };
+		5119FC6614857C8800F3734B /* lyomiTermAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lyomiTermAppDelegate.m; sourceTree = "<group>"; };
+		5119FC6914857C8900F3734B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5119FC4C14857C8700F3734B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5119FC5414857C8800F3734B /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5119FC4414857C8700F3734B = {
+			isa = PBXGroup;
+			children = (
+				5119FC5914857C8800F3734B /* lyomiTerm */,
+				5119FC5214857C8700F3734B /* Frameworks */,
+				5119FC5014857C8700F3734B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5119FC5014857C8700F3734B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5119FC4F14857C8700F3734B /* lyomiTerm.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5119FC5214857C8700F3734B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5119FC5314857C8800F3734B /* Cocoa.framework */,
+				5119FC5514857C8800F3734B /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5119FC5514857C8800F3734B /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5119FC5614857C8800F3734B /* AppKit.framework */,
+				5119FC5714857C8800F3734B /* CoreData.framework */,
+				5119FC5814857C8800F3734B /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		5119FC5914857C8800F3734B /* lyomiTerm */ = {
+			isa = PBXGroup;
+			children = (
+				5119FC6514857C8800F3734B /* lyomiTermAppDelegate.h */,
+				5119FC6614857C8800F3734B /* lyomiTermAppDelegate.m */,
+				5119FC6814857C8900F3734B /* MainMenu.xib */,
+				5119FC5A14857C8800F3734B /* Supporting Files */,
+			);
+			path = lyomiTerm;
+			sourceTree = "<group>";
+		};
+		5119FC5A14857C8800F3734B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5119FC5B14857C8800F3734B /* lyomiTerm-Info.plist */,
+				5119FC5C14857C8800F3734B /* InfoPlist.strings */,
+				5119FC5F14857C8800F3734B /* main.m */,
+				5119FC6114857C8800F3734B /* lyomiTerm-Prefix.pch */,
+				5119FC6214857C8800F3734B /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5119FC4E14857C8700F3734B /* lyomiTerm */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5119FC6D14857C8900F3734B /* Build configuration list for PBXNativeTarget "lyomiTerm" */;
+			buildPhases = (
+				5119FC4B14857C8700F3734B /* Sources */,
+				5119FC4C14857C8700F3734B /* Frameworks */,
+				5119FC4D14857C8700F3734B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = lyomiTerm;
+			productName = lyomiTerm;
+			productReference = 5119FC4F14857C8700F3734B /* lyomiTerm.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5119FC4614857C8700F3734B /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 5119FC4914857C8700F3734B /* Build configuration list for PBXProject "lyomiTerm" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5119FC4414857C8700F3734B;
+			productRefGroup = 5119FC5014857C8700F3734B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5119FC4E14857C8700F3734B /* lyomiTerm */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5119FC4D14857C8700F3734B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5119FC5E14857C8800F3734B /* InfoPlist.strings in Resources */,
+				5119FC6414857C8800F3734B /* Credits.rtf in Resources */,
+				5119FC6A14857C8900F3734B /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5119FC4B14857C8700F3734B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5119FC6014857C8800F3734B /* main.m in Sources */,
+				5119FC6714857C8800F3734B /* lyomiTermAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5119FC5C14857C8800F3734B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5119FC5D14857C8800F3734B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		5119FC6214857C8800F3734B /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5119FC6314857C8800F3734B /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		5119FC6814857C8900F3734B /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5119FC6914857C8900F3734B /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5119FC6B14857C8900F3734B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		5119FC6C14857C8900F3734B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		5119FC6E14857C8900F3734B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "lyomiTerm/lyomiTerm-Prefix.pch";
+				INFOPLIST_FILE = "lyomiTerm/lyomiTerm-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		5119FC6F14857C8900F3734B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "lyomiTerm/lyomiTerm-Prefix.pch";
+				INFOPLIST_FILE = "lyomiTerm/lyomiTerm-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5119FC4914857C8700F3734B /* Build configuration list for PBXProject "lyomiTerm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5119FC6B14857C8900F3734B /* Debug */,
+				5119FC6C14857C8900F3734B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5119FC6D14857C8900F3734B /* Build configuration list for PBXNativeTarget "lyomiTerm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5119FC6E14857C8900F3734B /* Debug */,
+				5119FC6F14857C8900F3734B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5119FC4614857C8700F3734B /* Project object */;
+}
