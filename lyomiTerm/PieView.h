@@ -13,6 +13,8 @@
 	NSFont *font;
 	CGColorRef defaultForeground, defaultBackground, cursorColor;
 	CGColorRef colors[8];
+	NSColor *nsColors[8], *nsForeground, *nsBackground;
+	BOOL init;
 }
 
 @property (nonatomic,retain) PieConnection *pie;
