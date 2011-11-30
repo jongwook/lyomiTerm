@@ -81,23 +81,43 @@ static Korean korean;
 	
 	// text rendering
 	NSDictionary *attr=[NSMutableDictionary dictionary];
-						
-	[attr setValue:[[NSFontManager sharedFontManager] fontWithFamily:@"Courier New" traits:0 weight:9 size:15.0]
-			forKey:NSFontAttributeName];
+	NSFont *courier = [[NSFontManager sharedFontManager] fontWithFamily:@"Courier New" traits:0 weight:6 size:14.0];
+	NSFont *nanum = [[NSFontManager sharedFontManager] fontWithFamily:@"NanumGothic" traits:0 weight:6 size:14.0];
+	if(nanum == nil) nanum = courier;
 
 	for (int i=0;i<TERMINAL_ROWS;i++) {
 		for(int j=0;j<TERMINAL_COLS;j++) {
 			[nsGraphicsContext saveGraphicsState];
 			
 			int index=i*TERMINAL_COLS+j;
+			unichar c = pie.screen[index];
+			if((c>=0x3130 && c<=0x318F) || (c>=0x1100 && c<=0x11FF) || (c>=0xAC00 && c<=0xD7AF))
+				[attr setValue:nanum forKey:NSFontAttributeName];
+			else
+				[attr setValue:courier forKey:NSFontAttributeName];
+			
 			int colorindex=pie.foreground[index];
 			NSColor *color=(colorindex==-2)?nsBackground:(colorindex==-1)?nsForeground:nsColors[colorindex];
 			[attr setValue:color forKey:NSForegroundColorAttributeName];
-			NSString *str=[NSString stringWithFormat:@"%C", pie.screen[index]];
+			
+			NSString *str=[NSString stringWithFormat:@"%C", c];
 			[str drawAtPoint:CGPointMake(j*8.0f,460.0f-i*20.0f) withAttributes:attr];
 			
 			[nsGraphicsContext restoreGraphicsState];
 		}
+	}
+	
+	// temporary korean text at the cursor
+	if(tempCharacter != 0) {
+		CGContextSetFillColorWithColor(context, cursorColor);
+		CGRect tmprect=CGRectMake((pie.currentCol+1)*8.f, 460.0f-pie.currentRow*20.0f, 8.0f, 20.0f);
+		CGContextAddRect(context,tmprect);
+		CGContextFillRect(context,tmprect);	
+		
+		[attr setValue:nanum forKey:NSFontAttributeName];
+		[attr setValue:nsForeground forKey:NSForegroundColorAttributeName];
+		NSString *str=[NSString stringWithFormat:@"%C", tempCharacter];
+		[str drawAtPoint:CGPointMake(pie.currentCol*8.0f, 460.0f-pie.currentRow*20.0f) withAttributes:attr];
 	}
 
 }
@@ -109,25 +129,22 @@ static Korean korean;
 
 - (void)keyDown:(NSEvent *)theEvent
 {
-	// Key pressed: Do something...
-	NSLog(@"keyDown: %@", theEvent);
+	//NSLog(@"keyDown: %@", theEvent);
 	
 	if(theEvent.keyCode == 51) {
-		NSLog(@"Backspace");
-		
 		if(korean.getSize() != 0) {
 			tempCharacter = korean.backspace();
+			[self setNeedsDisplay:YES];
 		} else {
 			[self sendKey:8];
 		}
 	} else {
 		int c=[theEvent.characters characterAtIndex:0];
-		NSLog(@"input : %C", c);
 		
 		if((c>=0x3130 && c<=0x318F) || (c>=0x1100 && c<=0x11FF) || (c>=0xAC00 && c<=0xD7AF)) {	// korean letters
 			unichar result = korean.add(c);
 			tempCharacter = korean.value();
-			
+			[self setNeedsDisplay:YES];
 			if(result) {
 				[self sendString:[NSString stringWithFormat:@"%C", result]];
 			}
@@ -139,6 +156,7 @@ static Korean korean;
 			
 			[self sendKey:c];
 			tempCharacter = 0;
+			[self setNeedsDisplay:YES];
 		}	
 	}
 	
