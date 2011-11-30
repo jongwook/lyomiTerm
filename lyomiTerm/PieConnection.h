@@ -12,10 +12,9 @@
 
 BOOL isCP949(unsigned char a, unsigned char b);
 
-@class PieView, PieViewController;
+@class PieView;
 
 @interface PieConnection : NSObject {
-	PieViewController *viewController;
 	PieView *pieView;
 	
 	AsyncSocket *socket;
@@ -38,7 +37,6 @@ BOOL isCP949(unsigned char a, unsigned char b);
 @property (readonly,assign) int *background;
 @property (readonly,assign) int currentRow, currentCol;
 @property (nonatomic,retain) PieView *pieView;
-@property (nonatomic,retain) PieViewController *viewController;
 
 -(BOOL) connectToHost:(NSString *)host;
 -(BOOL) connectToHost:(NSString *)host onPort:(int)port;

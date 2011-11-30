@@ -129,8 +129,6 @@ static Korean korean;
 
 - (void)keyDown:(NSEvent *)theEvent
 {
-	//NSLog(@"keyDown: %@", theEvent);
-	
 	if(theEvent.keyCode == 51) {
 		if(korean.getSize() != 0) {
 			tempCharacter = korean.backspace();
@@ -174,6 +172,10 @@ static Korean korean;
 - (void)sendString:(NSString *)str {
 	const char *cstr=[str cStringUsingEncoding:pie.encoding];
 	[pie send:cstr length:(int)strlen(cstr)];
+}
+
+- (void)disconnected {
+	[self.window setTitle:@"lyomiTerm - disconnected"];
 }
 
 @end

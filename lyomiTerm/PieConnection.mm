@@ -28,7 +28,7 @@ BOOL isCP949(unsigned char a, unsigned char b) {
 
 @implementation PieConnection
 
-@synthesize pieView, viewController, currentRow, currentCol, encoding;
+@synthesize pieView, currentRow, currentCol, encoding;
 
 -(unichar *)screen {
 	return (unichar *)screen;
@@ -79,12 +79,13 @@ BOOL isCP949(unsigned char a, unsigned char b) {
 
 -(void) onSocketDidDisconnect:(AsyncSocket *)sock {
 //	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-	[viewController disconnect];
+	[pieView disconnected];
 	NSLog(@"Socket Disconnected");
 }
 
 -(void) onSocket:(AsyncSocket *)sock willDisconnectWithError:(NSError *)err {
 	NSLog(@"Will Disconnect with error : %@",err);
+	[pieView disconnected];
 }
 
 -(void) onSocket:(AsyncSocket *)sock didConnectToHost:(NSString *)host port:(UInt16)port {

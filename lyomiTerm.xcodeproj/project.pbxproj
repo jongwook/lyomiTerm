@@ -18,6 +18,7 @@
 		511C375214857ECD00C2F833 /* PieConnection.mm in Sources */ = {isa = PBXBuildFile; fileRef = 511C374E14857ECD00C2F833 /* PieConnection.mm */; };
 		511C375314857ECD00C2F833 /* PieTerminal.mm in Sources */ = {isa = PBXBuildFile; fileRef = 511C375014857ECD00C2F833 /* PieTerminal.mm */; };
 		511C3763148586E300C2F833 /* PieView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 511C3762148586E300C2F833 /* PieView.mm */; };
+		51237DBF1485E4E100919830 /* lyomi.icns in Resources */ = {isa = PBXBuildFile; fileRef = 51237DBE1485E4E100919830 /* lyomi.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		511C375014857ECD00C2F833 /* PieTerminal.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PieTerminal.mm; sourceTree = "<group>"; };
 		511C3761148586E300C2F833 /* PieView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieView.h; sourceTree = "<group>"; };
 		511C3762148586E300C2F833 /* PieView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PieView.mm; sourceTree = "<group>"; };
+		51237DBE1485E4E100919830 /* lyomi.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = lyomi.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 		5119FC4414857C8700F3734B = {
 			isa = PBXGroup;
 			children = (
+				51237DBE1485E4E100919830 /* lyomi.icns */,
 				5119FC5914857C8800F3734B /* lyomiTerm */,
 				5119FC5214857C8700F3734B /* Frameworks */,
 				5119FC5014857C8700F3734B /* Products */,
@@ -180,6 +183,7 @@
 				5119FC5E14857C8800F3734B /* InfoPlist.strings in Resources */,
 				5119FC6414857C8800F3734B /* Credits.rtf in Resources */,
 				5119FC6A14857C8900F3734B /* MainMenu.xib in Resources */,
+				51237DBF1485E4E100919830 /* lyomi.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
