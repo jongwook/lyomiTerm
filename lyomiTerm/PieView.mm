@@ -17,7 +17,7 @@ static Korean korean;
 - (void)awakeFromNib 
 {
 	pie=[[PieConnection alloc] init];
-	[pie connectToHost:@"pie.kaist.ac.kr" onPort:23]; //temporary
+	[pie connectToHost:@"pie.kaist.ac.kr" onPort:24]; //temporary
 	pie.pieView=self;
 	[self.window makeKeyWindow];
 	[self.window makeFirstResponder:self];
