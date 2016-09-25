@@ -17,7 +17,7 @@ static Korean korean;
 - (void)awakeFromNib 
 {
 	pie=[[PieConnection alloc] init];
-	[pie connectToHost:@"pie.kaist.ac.kr" onPort:24]; //temporary
+	[pie connectToHost:@"143.248.82.205" onPort:24]; //temporary
 	pie.pieView=self;
 	[self.window makeKeyWindow];
 	[self.window makeFirstResponder:self];
@@ -27,7 +27,7 @@ static Korean korean;
 {
 	if(pie==nil) return;
 
-	font=[NSFont fontWithName:@"Courier" size:16.0f];
+	font=[NSFont fontWithName:@"Consolas" size:16.0f];
 	defaultForeground=CGColorCreateGenericRGB(0.8, 0.8, 0.8, 1.0);
 	defaultBackground=CGColorCreateGenericRGB(0.2, 0.3, 0.5, 1.0);
 	cursorColor=CGColorCreateGenericRGB(0.4, 1.0, 0.0, 1.0);
@@ -172,6 +172,10 @@ static Korean korean;
 - (void)sendString:(NSString *)str {
 	const char *cstr=[str cStringUsingEncoding:pie.encoding];
 	[pie send:cstr length:(int)strlen(cstr)];
+}
+
+- (BOOL)performKeyEquivalent:(NSEvent *)event {
+    return YES;
 }
 
 - (void)disconnected {
