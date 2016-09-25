@@ -9,6 +9,7 @@
 #import <AppKit/NSStringDrawing.h>
 
 static Korean korean;
+static NSString *address = @"143.248.82.205";
 
 @implementation PieView
 
@@ -16,11 +17,12 @@ static Korean korean;
 
 - (void)awakeFromNib 
 {
-	pie=[[PieConnection alloc] init];
-	[pie connectToHost:@"143.248.82.205" onPort:24]; //temporary
+	pie=[PieConnection new];
+	[pie connectToHost:address onPort:24];
 	pie.pieView=self;
 	[self.window makeKeyWindow];
 	[self.window makeFirstResponder:self];
+	[self.window setTitle:[NSString stringWithFormat:@"Pie - Connecting to %@", address]];
 }
 
 - (void)drawRect:(NSRect)dirtyRect
@@ -158,7 +160,7 @@ static Korean korean;
 		}	
 	}
 	
-	[super keyDown:theEvent];
+	//[super keyDown:theEvent];
 }
 
 - (void)sendKey:(int)key {
@@ -174,12 +176,12 @@ static Korean korean;
 	[pie send:cstr length:(int)strlen(cstr)];
 }
 
-- (BOOL)performKeyEquivalent:(NSEvent *)event {
-    return YES;
+- (void)connected {
+	[self.window setTitle:[NSString stringWithFormat:@"Pie - Connected to %@", address]];
 }
 
 - (void)disconnected {
-	[self.window setTitle:@"lyomiTerm - disconnected"];
+	[self.window setTitle:@"Pie - disconnected"];
 }
 
 @end

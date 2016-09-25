@@ -22,6 +22,7 @@
 - (void)keyDown:(NSEvent *)theEvent;
 - (void)sendKey:(int)key;
 - (void)sendString:(NSString *)str;
+- (void)connected;
 - (void)disconnected;
 
 @property (nonatomic,retain) PieConnection *pie;

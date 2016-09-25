@@ -7,6 +7,7 @@
 #include <sstream>
 
 #import "PieConnection.h"
+#import "PieView.h"
 
 #define BETWEEN(x,a,b) ( (x)>=(a) && (x)<=(b) )
 
@@ -90,6 +91,7 @@ BOOL isCP949(unsigned char a, unsigned char b) {
 
 -(void) onSocket:(AsyncSocket *)sock didConnectToHost:(NSString *)host port:(UInt16)port {
 	NSLog(@"Connected to the host!");
+	[pieView connected];
 	//[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 	stage=1;
 	[self send:"\xff\xfb\x1f"];
