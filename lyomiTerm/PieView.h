@@ -24,6 +24,8 @@
 - (void)sendString:(NSString *)str;
 - (void)connected;
 - (void)disconnected;
+- (void)restoreTitle;
+- (void)splashStatus:(NSString *)status;
 
 @property (nonatomic,retain) PieConnection *pie;
 

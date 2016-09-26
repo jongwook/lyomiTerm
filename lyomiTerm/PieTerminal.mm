@@ -130,16 +130,6 @@ void PieTerminal::negotiate(const char *token) {
 }
 
 void PieTerminal::update() {
-	static char buf[512];
-	while(false) {
-		int len=0;//socket_receive(sock,buf,512);
-		if(len==-1) {
-			bufferlen=-1;
-			return;
-		}
-		bufferlen+=len;
-		buffer.write(buf,len);
-	}
 }
 
 void PieTerminal::idle() {

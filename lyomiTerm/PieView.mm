@@ -9,7 +9,9 @@
 #import <AppKit/NSStringDrawing.h>
 
 static Korean korean;
+static NSString *application = @"Pie";
 static NSString *address = @"143.248.82.205";
+static NSString *title = application;
 
 @implementation PieView
 
@@ -22,7 +24,7 @@ static NSString *address = @"143.248.82.205";
 	pie.pieView=self;
 	[self.window makeKeyWindow];
 	[self.window makeFirstResponder:self];
-	[self.window setTitle:[NSString stringWithFormat:@"Pie - Connecting to %@", address]];
+	[self.window setTitle:[NSString stringWithFormat:@"%@ - Connecting to %@", application, address]];
 }
 
 - (void)drawRect:(NSRect)dirtyRect
@@ -177,11 +179,23 @@ static NSString *address = @"143.248.82.205";
 }
 
 - (void)connected {
-	[self.window setTitle:[NSString stringWithFormat:@"Pie - Connected to %@", address]];
+    title = [NSString stringWithFormat:@"%@ - Connected to %@", application, address];
+	[self.window setTitle:title];
 }
 
 - (void)disconnected {
-	[self.window setTitle:@"Pie - disconnected"];
+	title = [NSString stringWithFormat:@"%@ - disconnected", application];
+	[self.window setTitle:title];
+}
+
+- (void)restoreTitle {
+	[self.window setTitle:title];
+}
+
+- (void)splashStatus:(NSString *)status {
+	[self.window setTitle:[NSString stringWithFormat:@"%@ - %@", application, status]];
+	[[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(restoreTitle) object:nil];
+	[self performSelector:@selector(restoreTitle) withObject:nil afterDelay:1];
 }
 
 @end
