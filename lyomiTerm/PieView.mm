@@ -142,14 +142,24 @@ static NSString *title = application;
 		}
 	} else {
 		int c=[theEvent.characters characterAtIndex:0];
-		
-		if((c>=0x3130 && c<=0x318F) || (c>=0x1100 && c<=0x11FF) || (c>=0xAC00 && c<=0xD7AF)) {	// korean letters
+	
+		if ((c>=0x3130 && c<=0x318F) || (c>=0x1100 && c<=0x11FF) || (c>=0xAC00 && c<=0xD7AF)) {	// korean letters
 			unichar result = korean.add(c);
 			tempCharacter = korean.value();
 			[self setNeedsDisplay:YES];
 			if(result) {
 				[self sendString:[NSString stringWithFormat:@"%C", result]];
 			}
+		} else if (c == 0xf728) { // delete key
+			[self sendKey:0x7f];
+		} else if (c == 0xf700) { // up
+			[self sendChars:"\x1b[A"];
+		} else if (c == 0xf701) { // down
+			[self sendChars:"\x1b[B"];
+		} else if (c == 0xf702) { // left
+			[self sendChars:"\x1b[D"];
+		} else if (c == 0xf703) { // right
+			[self sendChars:"\x1b[C"];
 		} else {
 			unichar result = korean.clear();
 			if(result) {
@@ -178,8 +188,12 @@ static NSString *title = application;
 	[pie send:cstr length:(int)strlen(cstr)];
 }
 
+- (void)sendChars:(const char *)str {
+	[pie send:str length:(int)strlen(str)];
+}
+
 - (void)connected {
-    title = [NSString stringWithFormat:@"%@ - Connected to %@", application, address];
+	title = [NSString stringWithFormat:@"%@ - Connected to %@", application, address];
 	[self.window setTitle:title];
 }
 

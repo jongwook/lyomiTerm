@@ -21,6 +21,7 @@
 - (BOOL)acceptsFirstResponder;
 - (void)keyDown:(NSEvent *)theEvent;
 - (void)sendKey:(int)key;
+- (void)sendChars:(const char *)str;
 - (void)sendString:(NSString *)str;
 - (void)connected;
 - (void)disconnected;

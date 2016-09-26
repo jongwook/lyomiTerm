@@ -322,10 +322,10 @@ BOOL isCP949(unsigned char a, unsigned char b) {
 }
 
 -(void) negotiate:(const char *)token {
-    NSString *log = [NSString stringWithFormat:@"Negotiating %02x %02x %02x",(UInt8)token[0],(UInt8)token[1],(UInt8)token[2]];
+	NSString *log = [NSString stringWithFormat:@"Negotiating %02x %02x %02x",(UInt8)token[0],(UInt8)token[1],(UInt8)token[2]];
 	NSLog(@"%@", log);
-    [self.pieView splashStatus: log];
-    
+	[self.pieView splashStatus: log];
+
 	switch(token[1]) {
 		case '\xfa':
 			// suboption begin
