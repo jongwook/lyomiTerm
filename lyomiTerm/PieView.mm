@@ -8,9 +8,11 @@
 #import "Korean.h"
 #import <AppKit/NSStringDrawing.h>
 
-static Korean korean;
 static NSString *application = @"Pie";
 static NSString *address = @"143.248.82.205";
+static int port = 24;
+
+static Korean korean;
 static NSString *title = application;
 
 @implementation PieView
@@ -20,7 +22,7 @@ static NSString *title = application;
 - (void)awakeFromNib 
 {
 	pie=[PieConnection new];
-	[pie connectToHost:address onPort:24];
+	[pie connectToHost:address onPort:port];
 	pie.pieView=self;
 	[self.window makeKeyWindow];
 	[self.window makeFirstResponder:self];
